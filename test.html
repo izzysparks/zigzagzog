@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
   <title>Jalur Angka Zig-Zag</title>
   <style>
     body {
@@ -9,29 +9,22 @@
       text-align: center;
       padding: 30px;
       background-color: #a35f06;
-      max-width: 800px;
-      margin: auto;
-      overflow-x: hidden;
     }
 
     .status {
       margin-bottom: 20px;
-      display: flex none;
-      flex-direction: column;
-      align-items: center;
+      display: none;
     }
 
     .puzzle {
-      display: flex none;
+      display: none;
       flex-direction: column;
       align-items: center;
-      max-height: 80vh; /* agar tidak melebihi tinggi layar */
-      overflow-y: auto;
     }
 
     .row {
       display: flex;
-      flex-direction: column row;
+      flex-direction: row;
       align-items: center;
       height: 50px;
       gap: 6px;
@@ -103,13 +96,6 @@
     #timer {
       margin-top: 10px;
     }
-    @media (max-width: 600px) {
-  .box, .input-box {
-    width: 40px;
-    height: 40px;
-    font-size: 1rem;
-  }
-}
   </style>
 </head>
 <body>
@@ -205,10 +191,8 @@
 
           const input = document.createElement("input");
           input.className = "input-box";
-          input.type = "tel";
-          input.inputMode = "numeric";
+          input.type = "text";
           input.disabled = true;
-          input.pattern = "\\d*";
           input.maxLength = 1;
           input.dataset.index = i;
           input.oninput = handleInput;
@@ -249,7 +233,7 @@
         const nextInput = inputsOrdered[nextIndex];
         nextInput.disabled = false;
         nextInput.focus();
-        nextInput.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest"});
+        nextInput.scrollIntoView({ behavior: "smooth", block: "center" });
       } else {
         endGame(false);
       }
@@ -272,7 +256,7 @@
 
       checkAnswers();
       document.getElementById("restart-btn").style.display = "inline-block";
-      window.scrollTo({ top: top: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
     function checkAnswers() {
