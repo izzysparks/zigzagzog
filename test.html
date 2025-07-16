@@ -191,8 +191,10 @@
 
           const input = document.createElement("input");
           input.className = "input-box";
-          input.type = "text";
+          input.type = "tel";
+          input.inputMode = "numeric";
           input.disabled = true;
+          input.pattern = "\\d*";
           input.maxLength = 1;
           input.dataset.index = i;
           input.oninput = handleInput;
